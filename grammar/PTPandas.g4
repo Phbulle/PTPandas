@@ -1,42 +1,48 @@
-// Define o nome da gramática. Os arquivos gerados terão esse prefixo.
 grammar PTPandas;
 
-// Regras do Parser (Sintático) - começam com letra minúscula
-
-// Um programa é uma sequência de um ou mais comandos, terminando com o fim do arquivo.
+// 1. ADICIONE 'filtrarCmd' À REGRA 'comando'
 programa: comando+ EOF;
+comando: carregarCmd | mostrarCmd | filtrarCmd; // Adicionado filtrarCmd
 
-// Um comando pode ser um dos tipos abaixo. Adicionaremos mais aqui depois.
-comando: carregarCmd | mostrarCmd;
+// 2. CRIE A REGRA PARA O COMANDO DE FILTRAGEM
+// Ex: FILTRAR funcionarios ONDE "idade" > 30 EM funcionarios_seniores
+filtrarCmd: FILTRAR ID ONDE expressao EM ID;
 
-// Define a sintaxe para carregar dados
-// Ex: CARREGAR DADOS DE "arquivo.csv" EM variavel
+// 3. DEFINA O QUE É UMA 'expressao' DE FILTRO
+//    Por enquanto, será simples: "coluna" operador valor
+expressao: STRING operador valor;
+operador: OP_MAIOR | OP_MENOR | OP_IGUAL | OP_DIFERENTE | OP_MAIOR_IGUAL | OP_MENOR_IGUAL;
+valor: NUMERO | STRING;
+
+// -- Regras existentes --
 carregarCmd: CARREGAR DADOS DE STRING EM ID;
-
-// Define a sintaxe para mostrar dados
-// Ex: MOSTRAR variavel
-// Ex: MOSTRAR CABECALHO DE variavel
 mostrarCmd: MOSTRAR (CABECALHO DE)? ID;
 
+// --- LEXER ---
 
-// Regras do Lexer (Léxico) - definem os 'átomos' (tokens) da linguagem
-// Elas devem vir DEPOIS das regras do parser.
+// 4. ADICIONE OS NOVOS TOKENS (PALAVRAS-CHAVE)
+FILTRAR:    'FILTRAR';
+ONDE:       'ONDE';
 
+// 5. ADICIONE OS OPERADORES
+OP_MAIOR:       '>';
+OP_MENOR:       '<';
+OP_IGUAL:       '==';
+OP_DIFERENTE:   '!=';
+OP_MAIOR_IGUAL: '>=';
+OP_MENOR_IGUAL: '<=';
+
+// 6. ADICIONE UM TOKEN PARA NÚMEROS
+NUMERO:     [0-9]+ ('.' [0-9]+)?; // Suporta inteiros e decimais
+
+// -- Tokens existentes --
 CARREGAR:   'CARREGAR';
 DADOS:      'DADOS';
 DE:         'DE';
 EM:         'EM';
 MOSTRAR:    'MOSTRAR';
 CABECALHO:  'CABECALHO';
-
-// Um identificador (nome de variável)
 ID:         [a-zA-Z_][a-zA-Z0-9_]*;
-
-// Uma string de texto entre aspas duplas
 STRING:     '"' (~["])* '"';
-
-// Ignorar espaços em branco, tabulações e quebras de linha
 WS:         [ \t\r\n]+ -> skip;
-
-// Ignorar comentários que começam com # até o fim da linha
 COMENTARIO: '#' ~[\r\n]* -> skip;

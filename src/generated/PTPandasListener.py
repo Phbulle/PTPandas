@@ -26,6 +26,42 @@ class PTPandasListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PTPandasParser#filtrarCmd.
+    def enterFiltrarCmd(self, ctx:PTPandasParser.FiltrarCmdContext):
+        pass
+
+    # Exit a parse tree produced by PTPandasParser#filtrarCmd.
+    def exitFiltrarCmd(self, ctx:PTPandasParser.FiltrarCmdContext):
+        pass
+
+
+    # Enter a parse tree produced by PTPandasParser#expressao.
+    def enterExpressao(self, ctx:PTPandasParser.ExpressaoContext):
+        pass
+
+    # Exit a parse tree produced by PTPandasParser#expressao.
+    def exitExpressao(self, ctx:PTPandasParser.ExpressaoContext):
+        pass
+
+
+    # Enter a parse tree produced by PTPandasParser#operador.
+    def enterOperador(self, ctx:PTPandasParser.OperadorContext):
+        pass
+
+    # Exit a parse tree produced by PTPandasParser#operador.
+    def exitOperador(self, ctx:PTPandasParser.OperadorContext):
+        pass
+
+
+    # Enter a parse tree produced by PTPandasParser#valor.
+    def enterValor(self, ctx:PTPandasParser.ValorContext):
+        pass
+
+    # Exit a parse tree produced by PTPandasParser#valor.
+    def exitValor(self, ctx:PTPandasParser.ValorContext):
+        pass
+
+
     # Enter a parse tree produced by PTPandasParser#carregarCmd.
     def enterCarregarCmd(self, ctx:PTPandasParser.CarregarCmdContext):
         pass

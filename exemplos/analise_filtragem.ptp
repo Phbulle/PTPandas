@@ -1,0 +1,17 @@
+# Carregar os dados dos funcionários
+CARREGAR DADOS DE "dados/funcionarios.csv" EM funcionarios
+
+# Mostrar todos os funcionários para comparação
+MOSTRAR funcionarios
+
+# Filtrar funcionários com mais de 40 anos
+FILTRAR funcionarios ONDE "idade" > 40 EM seniores
+
+# Mostrar o resultado da filtragem
+MOSTRAR seniores
+
+# Filtrar funcionários do departamento de "TI"
+FILTRAR funcionarios ONDE "departamento" == "TI" EM equipe_ti
+
+# Mostrar a equipe de TI
+MOSTRAR CABECALHO DE equipe_ti

@@ -19,6 +19,26 @@ class PTPandasVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PTPandasParser#filtrarCmd.
+    def visitFiltrarCmd(self, ctx:PTPandasParser.FiltrarCmdContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PTPandasParser#expressao.
+    def visitExpressao(self, ctx:PTPandasParser.ExpressaoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PTPandasParser#operador.
+    def visitOperador(self, ctx:PTPandasParser.OperadorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PTPandasParser#valor.
+    def visitValor(self, ctx:PTPandasParser.ValorContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PTPandasParser#carregarCmd.
     def visitCarregarCmd(self, ctx:PTPandasParser.CarregarCmdContext):
         return self.visitChildren(ctx)
