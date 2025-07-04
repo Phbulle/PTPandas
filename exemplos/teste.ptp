@@ -1,0 +1,5 @@
+# Meu primeiro script de análise
+CARREGAR DADOS DE "dados/vendas.csv" EM minhas_vendas
+
+# Ver as primeiras linhas
+MOSTRAR CABECALHO DE minhas_vendas
