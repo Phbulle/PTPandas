@@ -42,7 +42,7 @@ java -jar antlr.jar -Dlanguage=Python3 -visitor -o src/generated grammar/PTPanda
 Agora você está pronto! Para executar um script, passe seu caminho como argumento para main.py.
 
 ```
-python main.py exemplos/analise_rh.ptp
+python main.py exemplos/analise_filtragem.ptp
 ```
 
 # Exemplos de Código
